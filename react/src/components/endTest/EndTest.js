@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Typography from '@material-ui/core/Typography';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import withStyles from '@material-ui/core/styles/withStyles';
-
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   main: {
@@ -53,14 +54,17 @@ class EndTest extends Component{
 
   render() {
     return(
-      <div>
+      <main className={ this.props.classes.main}>
+        <CssBaseline />
+        <Paper className={this.props.classes.paper}>
         <Typography align="center" component="h1" variant="h5">
             Your Total Score is:{this.state.result}
         </Typography>
         <Typography align="center" component="h1" variant="h5">
           Thank You For Giving The Test
         </Typography>
-      </div>
+        </Paper>
+      </main>
     )
   }
 }

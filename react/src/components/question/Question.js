@@ -101,6 +101,11 @@ class Question extends Component{
       thankyou : true
     });
     clearInterval(this.timer)
+    this.timer = clearInterval(this.tick.bind(this), 1000)
+  }
+  componentWillUnmount(){
+    clearInterval(this.timer)
+    this.timer = clearInterval(this.tick.bind(this), 2000)
   }
 
   render() {

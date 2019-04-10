@@ -8,7 +8,9 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 
-
+const li = {
+  listStyleType: "none",
+}
 const styles = {
   root: {
     flexGrow: 1,
@@ -20,6 +22,7 @@ const styles = {
     marginLeft: -12,
     marginRight: 20,
   },
+
 };
 
 class Header extends Component{
@@ -32,19 +35,25 @@ class Header extends Component{
                 <AuthConsumer>
                   {({ validUser, login, logout,register}) => (
                     <React.Fragment>
+                    <ul>
+                      <li style={li}>
+                        <Link   to="/" color="inherit">Home</Link>
+                      </li>
+                    </ul>
                     {validUser || localStorage.validUser === "true" ? (
-                      
-                      <ul className="navbar-nav ml-auto">
-                        <li className="nav-item">
-                          <Link to="/" className="nav-link" onClick={logout}>Logout</Link>
+
+                      <ul>
+                        <li style={li}>
+                          <Link  to="/"  onClick={logout}>Logout</Link>
                         </li>
                       </ul>
                     ) : (
-                      <ul className="navbar-nav ml-auto loginsignupWrapper">
-                        <li className="nav-item">
-                          <Link to="/login" color="inherit" className="nav-link" id="login">Login</Link>
+                      <ul className="">
+                        <li style={li}>
+                          <Link to="/login" color="inherit"  id="login">Login</Link>
                         </li>
                       </ul>
+
                     )}
                     </React.Fragment>
                   )}
