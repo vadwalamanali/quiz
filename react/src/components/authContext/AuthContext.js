@@ -30,34 +30,8 @@ class AuthProvider extends React.Component {
         //data: responseJson
       })
     } else{
-      alert("Are you mad!")
+      alert("wrong credentials")
     }
-/*
-    return fetch('https://reqres.in/api/register', {
-        method:'POST',
-        body: JSON.stringify({email:email,password:password}),
-        headers: new Headers({
-          'Content-Type': 'application/json'
-        })
-      })
-      .then((response) => {
-        this.setState({
-          serverError: response.status === 504 ? 'Something went wrong.' : null
-        })
-        return response.json()
-      })
-      .then((responseJson) => {
-        if(responseJson !== undefined) {
-          this.setState({
-            validUser: true,
-            data: responseJson
-          })
-        }
-      })
-      .catch((error) => {
-        console.error("request unsuccesful",error);
-      });
-*/
   }
   logout() {
     this.setState({ validUser: false })

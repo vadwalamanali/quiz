@@ -49,6 +49,7 @@ class Question extends Component{
   }
   componentWillUnmount () {
     clearInterval(this.timer)
+    this.timer = clearInterval(this.tick.bind(this), 2000)
   }
   tick () {
     this.setState({count: (this.state.count + 1)})
@@ -57,7 +58,9 @@ class Question extends Component{
     clearInterval(this.timer)
     this.timer = setInterval(this.tick.bind(this), 1000)
   }
-
+  tick () {
+    this.setState({count: (this.state.count + 1)})
+  }
   handleAanswerChange(event) {
     this.setState({
       userAns: {
@@ -79,8 +82,17 @@ class Question extends Component{
       this.ul.current.querySelectorAll("input:checked")[0].checked = false;
     }
   }
-  //check the radiobuttons which has already given the answer
-  componentDidUpdate() {
+
+  componentDidUpdate(prevProps, prevState) {
+    //timeup the timer after 1 hour
+    if(prevState.count >= 10 ){
+      this.setState({count: "time out",completed:true})
+      clearInterval(this.timer)
+    }
+    else{
+      const count = this.state.count
+    }
+    //check the radiobuttons which has already given the answer
     const radios = document.getElementsByTagName('input');
 
     Object.entries(this.state.userAns).forEach(
@@ -103,13 +115,17 @@ class Question extends Component{
     clearInterval(this.timer)
     this.timer = clearInterval(this.tick.bind(this), 1000)
   }
-  componentWillUnmount(){
-    clearInterval(this.timer)
-    this.timer = clearInterval(this.tick.bind(this), 2000)
-  }
 
   render() {
+    const completed = this.state.completed;
     if(this.state.thankyou ){
+      return(
+        <div>
+          <EndTest userResponse={this.state.userAns} originalResponse={this.props.data.results}/>
+        </div>
+      )
+    }
+    if(this.state.completed){
       return(
         <div>
           <EndTest userResponse={this.state.userAns} originalResponse={this.props.data.results}/>
@@ -133,7 +149,7 @@ class Question extends Component{
     });
 
     return (
-      <div className="">
+      <div>
         <h1>Time:- {this.state.count}</h1>
         <h1>Question Number:- {currentPage+1}</h1>
         <ul ref={this.ul}>
