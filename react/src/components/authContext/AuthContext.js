@@ -3,12 +3,10 @@ import { BrowserRouter as Router,
 Route, Redirect } from 'react-router-dom';
 
 const AuthContext = React.createContext()
-let val = {};
 
 class AuthProvider extends React.Component {
   state = {
     validUser: false,
-    serverError: ""
   };
 
   constructor() {
@@ -27,7 +25,6 @@ class AuthProvider extends React.Component {
     } else if (document.querySelector("#email").value==="manali" && document.querySelector("#password").value === "manali" ){
       this.setState({
         validUser: true,
-        //data: responseJson
       })
     } else{
       alert("wrong credentials")
@@ -49,8 +46,6 @@ class AuthProvider extends React.Component {
           validUser: this.state.validUser,
           login: this.login,
           logout: this.logout,
-          data: this.state.data,
-          serverError : this.state.serverError
         }}
       >
         {this.props.children}

@@ -33,7 +33,7 @@ class Header extends Component{
         <AppBar position="static">
           <Toolbar>
                 <AuthConsumer>
-                  {({ validUser, login, logout,register}) => (
+                  {({ validUser, login, logout}) => (
                     <React.Fragment>
                     <ul>
                       <li style={li}>

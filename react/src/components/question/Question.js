@@ -49,7 +49,7 @@ class Question extends Component{
   }
   componentWillUnmount () {
     clearInterval(this.timer)
-    this.timer = clearInterval(this.tick.bind(this), 2000)
+    this.timer = clearInterval(this.tick.bind(this), 1000)
   }
   tick () {
     this.setState({count: (this.state.count + 1)})
@@ -57,9 +57,6 @@ class Question extends Component{
   componentDidMount() {
     clearInterval(this.timer)
     this.timer = setInterval(this.tick.bind(this), 1000)
-  }
-  tick () {
-    this.setState({count: (this.state.count + 1)})
   }
   handleAanswerChange(event) {
     this.setState({
@@ -85,7 +82,7 @@ class Question extends Component{
 
   componentDidUpdate(prevProps, prevState) {
     //timeup the timer after 1 hour
-    if(prevState.count >= 10 ){
+    if(prevState.count >= 3600 ){
       this.setState({count: "time out",completed:true})
       clearInterval(this.timer)
     }
