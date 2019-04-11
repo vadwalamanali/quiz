@@ -35,8 +35,6 @@ class Question extends Component{
     this.state = {
       currentPage: 0,
       questionPerPage: 1,
-      correctanswer: '',
-      incorrectanswers: '',
       count: 1,
       userAns: {},
       thankyou: false
@@ -85,9 +83,6 @@ class Question extends Component{
     if(prevState.count >= 3600 ){
       this.setState({count: "time out",completed:true})
       clearInterval(this.timer)
-    }
-    else{
-      const count = this.state.count
     }
     //check the radiobuttons which has already given the answer
     const radios = document.getElementsByTagName('input');
