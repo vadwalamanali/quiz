@@ -1,0 +1,28 @@
+.pagination>li.active {
+  background: purple;
+  color: #fff;
+}
+.pagination>li {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+  text-align: center;
+}
+.pagination>li[disabled] {
+  cursor: none;
+  pointer-events: none;
+}
+.pagination{
+  display:inline-block;
+  padding: 0 5px;
+  cursor: pointer;
+  color: #6c58bF;
+}
+.aftervisitLatter{
+  background: purple !important;
+}
+.visitLatter{
+  background: red;
+}
